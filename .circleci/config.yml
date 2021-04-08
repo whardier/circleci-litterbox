@@ -12,7 +12,18 @@ jobs:
           command: echo << parameters.text >>
     
 workflows:
-  welcome:
+  ichi-workflow:
     jobs:
       - echo:
           text: ichi
+  ni-workflow:
+    jobs:
+      - echo:
+          text: ni
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /^\d+\.\d+\.\d+$/
+                - /^\d+\.\d+\.\d+\.post\d+$/            
