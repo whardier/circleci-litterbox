@@ -1,0 +1,18 @@
+version: 2.1
+
+jobs:
+  echo:
+    docker:
+      - image: cimg/base
+    parameters:
+      text:
+        type: string
+    steps:
+      - run:
+          command: echo << parameters.text >>
+    
+workflows:
+  welcome:
+    jobs:
+      - echo:
+          text: ichi
